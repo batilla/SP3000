@@ -8,7 +8,7 @@
     <h1>A form to write your story</h1>
     <p>Nothing much yet</p>
     Form
-    <form action="/test" method="POST"></form>
+    <form action="/save-toform" method="POST">
         <br>
         Story titel:
         <br>
@@ -22,9 +22,9 @@
         <br>
         <textarea name="criteria" id="" cols="80" rows="5"></textarea>
         <br>
-        Business Valiue
+        Business Value
         <br>
-        <input type="number" name="b_value" min="100" max="1500" step="100" value="100">
+        <input type="number" name="business_value" min="100" max="1500" step="100" value="100">
         <br>
         Estimation (h)
         <br>
@@ -39,7 +39,7 @@
             <option value="Review">Planning</option>
             <option value="Done">Planning</option>
         </select>
-        <input type="submit" value="Submit form">
+        <input type="submit" {% if id_ %} value="Update" {% else %} value="Create" {% endif %}/>
     </form>
 </body>
 </html>
