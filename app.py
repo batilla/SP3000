@@ -34,9 +34,12 @@ def delete(id_):
     #id_ != index
     pass
 
-def save_new_story(new_story):
-    #dict->list
-    pass
+def unic_id(data_file):
+    table = read_file(data_file)
+    max_id = len(table)
+    return str(max_id + 1)
+
+
 
 @app.route('/') 
 def route_list():
@@ -55,9 +58,11 @@ def route_save():
     dictform = {}
     result = []
     formdata = request.form
+    new_id = unic_id(data_file)
     for item in formdata.items():
         dictform[item[0]] = item[1]
     result = list(dictform.values())
+    result.insert(0, new_id)
     write_file(data_file, result)
     print(result)
     return redirect('/')
